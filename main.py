@@ -132,8 +132,7 @@ data = {"weather_cq":{"value":wea_cq},"temperature_cq":{"value":temperature_cq},
         "birthday_left_jj":{"value":get_birthday_jj()},
         "words":{"value":get_words(), "color":get_random_color()}}
 
-name=['user_id_test','user_id_wkh','user_id_mqy','user_id_lcj','user_id_zhy','user_id_zzy','user_id_ty','user_id_jj']
-for i in name:
-  res = wm.send_template(i, template_id, data)
-
-  print(res)
+# name=['user_id_test','user_id_wkh','user_id_mqy','user_id_lcj','user_id_zhy','user_id_zzy','user_id_ty','user_id_jj']
+# for i in name:
+res = wm.send_template(user_id_test, template_id, data)
+print(res)
