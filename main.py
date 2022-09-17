@@ -9,97 +9,36 @@
 # today = datetime.now()
 # start_date = os.environ['START_DATE']
 
-# city_cq = os.environ['CITY_cq']
-# city_xa = os.environ['CITY_xa']
-# city_bj = os.environ['CITY_bj']
-
-# birthday_wkh = os.environ['BIRTHDAY_wkh']
-# birthday_mqy = os.environ['BIRTHDAY_mqy']
-# birthday_lcj = os.environ['BIRTHDAY_lcj']
-# birthday_zhy = os.environ['BIRTHDAY_zhy']
-# birthday_zzy = os.environ['BIRTHDAY_zzy']
-# birthday_ty = os.environ['BIRTHDAY_ty']
-# birthday_jj = os.environ['BIRTHDAY_jj']
+# city = os.environ['CITY']
+# birthday = os.environ['BIRTHDAY']
 
 # app_id = os.environ["APP_ID"]
 # app_secret = os.environ["APP_SECRET"]
 
-# user_id_test = os.environ["USER_ID_test"]
-# # user_id_wkh = os.environ["USER_ID_wkh"]
-# # user_id_mqy = os.environ["USER_ID_mqy"]
-# # user_id_lcj = os.environ["USER_ID_lcj"]
-# # user_id_zhy = os.environ["USER_ID_zhy"]
-# # user_id_zzy = os.environ["USER_ID_zzy"]
-# # user_id_ty = os.environ["USER_ID_ty"]
-# # user_id_jj = os.environ["USER_ID_jj"]
-
+# # user_id = os.environ["USER_ID"]
+# user_ids = os.environ["USER_ID"].split("\n")
 # template_id = os.environ["TEMPLATE_ID"]
 
 
-# def get_weather_cq():
-#   url_cq = "http://autodev.openspeech.cn/csp/api/v2.1/weather?openId=aiuicus&clientType=android&sign=android&city=" + city_cq
-#   res_cq = requests.get(url_cq).json()
-#   weather_cq = res_cq['data']['list'][0]
-#   return weather_cq['weather'], math.floor(weather_cq['temp'])
+# def get_weather(a):
+#   url = "http://autodev.openspeech.cn/csp/api/v2.1/weather?openId=aiuicus&clientType=android&sign=android&city=" + a
+#   res = requests.get(url).json()
+#   weather = res['data']['list'][0]
+#   return weather['weather'], math.floor(weather['temp']), math.floor(weather['high']), math.floor(weather['low'])
 
-# def get_weather_xa():
-#   url_xa = "http://autodev.openspeech.cn/csp/api/v2.1/weather?openId=aiuicus&clientType=android&sign=android&city=" + city_xa
-#   res_xa = requests.get(url_xa).json()
-#   weather_xa = res_xa['data']['list'][0]
-#   return weather_xa['weather'], math.floor(weather_xa['temp'])
-
-# def get_weather_bj():
-#   url_bj = "http://autodev.openspeech.cn/csp/api/v2.1/weather?openId=aiuicus&clientType=android&sign=android&city=" + city_bj
-#   res_bj = requests.get(url_bj).json()
-#   weather_bj = res_bj['data']['list'][0]
-#   return weather_bj['weather'], math.floor(weather_bj['temp'])
-
+# wea, temperature,high,low = get_weather(city)
 
 # def get_count():
 #   delta = today - datetime.strptime(start_date, "%Y-%m-%d")
 #   return delta.days
 
-# def get_birthday_wkh():
-#   next_wkh = datetime.strptime(str(date.today().year) + "-" + birthday_wkh, "%Y-%m-%d")
-#   if next_wkh < datetime.now():
-#     next_wkh = next_wkh.replace(year=next_wkh.year + 1)
-#   return (next_wkh - today).days
+# def get_birthday(d):
+#   next = datetime.strptime(str(date.today().year) + "-" + d, "%Y-%m-%d")
+#   if next < datetime.now():
+#     next = next.replace(year=next.year + 1)
+#   return (next - today).days
 
-# def get_birthday_mqy():
-#   next_mqy = datetime.strptime(str(date.today().year) + "-" + birthday_mqy, "%Y-%m-%d")
-#   if next_mqy < datetime.now():
-#     next_mqy = next_mqy.replace(year=next_mqy.year + 1)
-#   return (next_mqy - today).days
-
-# def get_birthday_lcj():
-#   next_lcj = datetime.strptime(str(date.today().year) + "-" + birthday_lcj, "%Y-%m-%d")
-#   if next_lcj < datetime.now():
-#     next_lcj = next_lcj.replace(year=next_lcj.year + 1)
-#   return (next_lcj - today).days
-
-# def get_birthday_zhy():
-#   next_zhy = datetime.strptime(str(date.today().year) + "-" + birthday_zhy, "%Y-%m-%d")
-#   if next_zhy < datetime.now():
-#     next_zhy = next_zhy.replace(year=next_zhy.year + 1)
-#   return (next_zhy - today).days
-
-# def get_birthday_zzy():
-#   next_zzy = datetime.strptime(str(date.today().year) + "-" + birthday_zzy, "%Y-%m-%d")
-#   if next_zzy < datetime.now():
-#     next_zzy = next_zzy.replace(year=next_zzy.year + 1)
-#   return (next_zzy - today).days
-
-# def get_birthday_ty():
-#   next_ty = datetime.strptime(str(date.today().year) + "-" + birthday_ty, "%Y-%m-%d")
-#   if next_ty < datetime.now():
-#     next_ty = next_ty.replace(year=next_ty.year + 1)
-#   return (next_ty - today).days
-
-# def get_birthday_jj():
-#   next_jj = datetime.strptime(str(date.today().year) + "-" + birthday_jj, "%Y-%m-%d")
-#   if next_jj < datetime.now():
-#     next_jj = next_jj.replace(year=next_jj.year + 1)
-#   return (next_jj - today).days
+# birthday = get_birthday(birthday)
 
 # def get_words():
 #   words = requests.get("https://api.shadiao.pro/chp")
@@ -110,84 +49,211 @@
 # def get_random_color():
 #   return "#%06x" % random.randint(0, 0xFFFFFF)
 
-
 # client = WeChatClient(app_id, app_secret)
-
 # wm = WeChatMessage(client)
 
-# wea_cq, temperature_cq = get_weather_cq()
-# wea_xa, temperature_xa = get_weather_xa()
-# wea_bj, temperature_bj = get_weather_bj()
+# data = {
+#         "date":{"value":today.strftime('%Y年%m月%d日'), "color":get_random_color()},
+#         "weather":{"value":wea, "color":get_random_color()},
+#   "temperature":{"value":temperature, "color":get_random_color()},
+#   "high":{"value":high, "color":get_random_color()},
+#   "low":{"value":low, "color":get_random_color()},
+#         "love_days":{"value":get_count(), "color":get_random_color()},
+#         "words":{"value":get_words(), "color":get_random_color()}
+#         }
 
-# data = {"weather_cq":{"value":wea_cq},"temperature_cq":{"value":temperature_cq},
-#         "weather_xa":{"value":wea_xa},"temperature_xa":{"value":temperature_xa},
-#         "weather_bj":{"value":wea_bj},"temperature_bj":{"value":temperature_bj},
-#         "love_days":{"value":get_count()},
-#         "birthday_left_wkh":{"value":get_birthday_wkh()},
-#         "birthday_left_mqy":{"value":get_birthday_mqy()},
-#         "birthday_left_lcj":{"value":get_birthday_lcj()},
-#         "birthday_left_zhy":{"value":get_birthday_zhy()},
-#         "birthday_left_zzy":{"value":get_birthday_zzy()},
-#         "birthday_left_ty":{"value":get_birthday_ty()},
-#         "birthday_left_jj":{"value":get_birthday_jj()},
-#         "words":{"value":get_words(), "color":get_random_color()}}
+# count=0
+# for user_id in user_ids:
+#   res = wm.send_template(user_id, template_id, data)
+#   count+=1
+# # print(res)
+# print("发送了"+str(count)+"条消息")
 
-# # name=['user_id_test','user_id_wkh','user_id_mqy','user_id_lcj','user_id_zhy','user_id_zzy','user_id_ty','user_id_jj']
-# # for i in name:
-# res = wm.send_template(user_id_test, template_id, data)
-# print(res)
-
-
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 import math
-from wechatpy import WeChatClient
-from wechatpy.client.api import WeChatMessage, WeChatTemplate
+from wechatpy import WeChatClient, WeChatClientException
+from wechatpy.client.api import WeChatMessage
 import requests
 import os
 import random
+import re
 
-today = datetime.now()
-start_date = os.environ['START_DATE']
-city_cq = os.environ['CITY_CQ']
-birthday_wkh = os.environ['BIRTHDAY_WKH']
+nowtime = datetime.utcnow() + timedelta(hours=8)  # 东八区时间
+today = datetime.strptime(str(nowtime.date()), "%Y-%m-%d") #今天的日期
 
-app_id = os.environ["APP_ID"]
-app_secret = os.environ["APP_SECRET"]
+city = os.getenv('CITY')
+birthday = os.getenv('BIRTHDAY')
 
-user_id_test = os.environ["USER_ID_test"]
-template_id = os.environ["TEMPLATE_ID"]
+app_id = os.getenv('APP_ID')
+app_secret = os.getenv('APP_SECRET')
 
+user_ids = os.getenv('USER_ID', '').split("\n")
+template_id = os.getenv('TEMPLATE_ID')
 
-def get_weather_cq():
-  url_cq = "http://autodev.openspeech.cn/csp/api/v2.1/weather?openId=aiuicus&clientType=android&sign=android&city=" + city_cq
-  res_cq = requests.get(url_cq).json()
-  weather_cq = res_cq['data']['list'][0]
-  return weather_cq['weather'], math.floor(weather_cq['temp'])
+if app_id is None or app_secret is None:
+  print('请设置 APP_ID 和 APP_SECRET')
+  exit(422)
 
-def get_count():
+if not user_ids:
+  print('请设置 USER_ID，若存在多个 ID 用回车分开')
+  exit(422)
+
+if template_id is None:
+  print('请设置 TEMPLATE_ID')
+  exit(422)
+
+# weather 直接返回对象，在使用的地方用字段进行调用。
+def get_weather():
+  if city is None:
+    print('请设置城市')
+    return None
+  url = "http://autodev.openspeech.cn/csp/api/v2.1/weather?openId=aiuicus&clientType=android&sign=android&city=" + city
+  # OpenRefactory Warning: The 'requests.get' method does not use any 'timeout' threshold which may cause program to hang indefinitely.
+  res = requests.get(url, timeout=100).json()
+  if res is None:
+    return None
+  if res['code'] != 0:
+    return None
+  weather = res['data']['list'][0]
+  return weather
+
+# 获取当前日期为星期几
+def get_week_day():
+  week_list = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"]
+  week_day = week_list[datetime.date(today).weekday()]
+  return week_day
+
+# 纪念日正数
+def get_memorial_days_count():
+  if start_date is None:
+    print('没有设置 START_DATE')
+    return 0
   delta = today - datetime.strptime(start_date, "%Y-%m-%d")
   return delta.days
 
-def get_birthday_wkh():
-  next_wkh = datetime.strptime(str(date.today().year) + "-" + birthday_wkh, "%Y-%m-%d")
-  if next_wkh < datetime.now():
-    next_wkh = next_wkh.replace(year=next_wkh.year + 1)
-  return (next_wkh - today).days
+# 各种倒计时
+def get_counter_left(aim_date):
+  if aim_date is None:
+    return 0
 
+  # 为了经常填错日期的同学们
+  if re.match(r'^\d{1,2}\-\d{1,2}$', aim_date):
+    next = datetime.strptime(str(date.today().year) + "-" + aim_date, "%Y-%m-%d")
+  elif re.match(r'^\d{2,4}\-\d{1,2}\-\d{1,2}$', aim_date):
+    next = datetime.strptime(aim_date, "%Y-%m-%d")
+    next = next.replace(nowtime.year)
+  else:
+    print('日期格式不符合要求')
+    
+  if next < nowtime:
+    next = next.replace(year=next.year + 1)
+  return (next - today).days
+
+# 彩虹屁 接口不稳定，所以失败的话会重新调用，直到成功
 def get_words():
-  words = requests.get("https://api.shadiao.pro/chp")
+  # OpenRefactory Warning: The 'requests.get' method does not use any 'timeout' threshold which may cause program to hang indefinitely.
+  words = requests.get("https://api.shadiao.pro/chp", timeout=100)
   if words.status_code != 200:
     return get_words()
   return words.json()['data']['text']
 
+def format_temperature(temperature):
+  return math.floor(temperature)
+
+# 随机颜色
 def get_random_color():
   return "#%06x" % random.randint(0, 0xFFFFFF)
 
+# 返回一个数组，循环产生变量
+def split_birthday():
+  if birthday is None:
+    return None
+  return birthday.split('\n')
 
-client = WeChatClient(app_id, app_secret)
+weather = get_weather()
+if weather is None:
+  print('获取天气失败')
+  exit(422)
+data = {
+  "city": {
+    "value": city,
+    "color": get_random_color()
+  },
+  "date": {
+    "value": today.strftime('%Y年%m月%d日'),
+    "color": get_random_color()
+  },
+  "week_day": {
+    "value": get_week_day(),
+    "color": get_random_color()
+  },
+  "weather": {
+    "value": weather['weather'],
+    "color": get_random_color()
+  },
+  "humidity": {
+    "value": weather['humidity'],
+    "color": get_random_color()
+  },
+  "wind": {
+    "value": weather['wind'],
+    "color": get_random_color()
+  },
+  "air_data": {
+    "value": weather['airData'],
+    "color": get_random_color()
+  },
+  "air_quality": {
+    "value": weather['airQuality'],
+    "color": get_random_color()
+  },
+  "temperature": {
+    "value": math.floor(weather['temp']),
+    "color": get_random_color()
+  },
+  "highest": {
+    "value": math.floor(weather['high']),
+    "color": get_random_color()
+  },
+  "lowest": {
+    "value": math.floor(weather['low']),
+    "color": get_random_color()
+  },
+  "love_days": {
+    "value": get_memorial_days_count(),
+    "color": get_random_color()
+  },
+  "words": {
+    "value": get_words(),
+    "color": get_random_color()
+  },
+}
 
-wm = WeChatMessage(client)
-wea_cq, temperature_cq = get_weather_cq()
-data = {"weather_cq":{"value":wea_cq},"temperature_cq":{"value":temperature_cq},"love_days":{"value":get_count()},"birthday_left_wkh":{"value":get_birthday_wkh()},"words":{"value":get_words(), "color":get_random_color()}}
-res = wm.send_template(user_id_test, template_id, data)
-print(res)
+for index, aim_date in enumerate(split_birthday()):
+  key_name = "birthday_left"
+  if index != 0:
+    key_name = key_name + "_%d" % index
+  data[key_name] = {
+    "value": get_counter_left(aim_date),
+    "color": get_random_color()
+  }
+
+if __name__ == '__main__':
+  try:
+    client = WeChatClient(app_id, app_secret)
+  except WeChatClientException as e:
+    print('微信获取 token 失败，请检查 APP_ID 和 APP_SECRET，或当日调用量是否已达到微信限制。')
+    exit(502)
+
+  wm = WeChatMessage(client)
+  count = 0
+  try:
+    for user_id in user_ids:
+      print('正在发送给 %s, 数据如下：%s' % (user_id, data))
+      res = wm.send_template(user_id, template_id, data)
+      count+=1
+  except WeChatClientException as e:
+    print('微信端返回错误：%s。错误代码：%d' % (e.errmsg, e.errcode))
+    exit(502)
+
+  print("发送了" + str(count) + "条消息")
