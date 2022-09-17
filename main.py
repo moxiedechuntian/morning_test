@@ -123,13 +123,13 @@ def get_week_day():
   week_day = week_list[datetime.date(today).weekday()]
   return week_day
 
-# 纪念日正数
-def get_memorial_days_count():
-  if start_date is None:
-    print('没有设置 START_DATE')
-    return 0
-  delta = today - datetime.strptime(start_date, "%Y-%m-%d")
-  return delta.days
+# # 纪念日正数
+# def get_memorial_days_count():
+#   if start_date is None:
+#     print('没有设置 START_DATE')
+#     return 0
+#   delta = today - datetime.strptime(start_date, "%Y-%m-%d")
+#   return delta.days
 
 # 各种倒计时
 def get_counter_left(aim_date):
